@@ -22,15 +22,15 @@ class EntriesRepositoryImpl: EntriesRepository {
     }
     
     func search(word: String) -> AnyPublisher<[EntryViewModel], NetworkRequestError> {
-        return apiService.dispatch(APIRouter.GetEntry(word: word))
-            .map { entries in
-                guard let firstEntry = entries.first else { return [] }
-                let entryViewModel = EntryViewModel(entry: firstEntry)
-                self.storageService.save(entry: entryViewModel)
-                return [entryViewModel]
-            }
-            .eraseToAnyPublisher()
-    }
+            return apiService.fetchEntry(word: word)
+                .map { entry in
+                    guard let firstEntry = entry.first else { return [] }
+                    let entryViewModel = EntryViewModel(entry: firstEntry)
+                    self.storageService.save(entry: entryViewModel)
+                    return [entryViewModel]
+                }
+                .eraseToAnyPublisher()
+        }
 
     func fetchSavedEntries() -> [EntryViewModel] {
         return storageService.fetchEntries()

@@ -7,22 +7,39 @@
 
 import Foundation
 import Combine
+import Moya
+import CombineMoya
 
 protocol EntryService {
-    func dispatch<R: EndpointRouter>(_ request: R) -> AnyPublisher<R.ReturnType, NetworkRequestError>
+    func fetchEntry(word: String) -> AnyPublisher<Entry, NetworkRequestError>
 }
 
-struct EntryServiceImpl: EntryService {
-
-    private let apiClient: APIClient = APIClient()
-
-    @discardableResult
-    public func dispatch<R: EndpointRouter>(_ request: R) -> AnyPublisher<R.ReturnType, NetworkRequestError> {
-        guard let urlRequest = request.asURLRequest(baseURL: APIConstants.basedURL) else {
-            return Fail(outputType: R.ReturnType.self, failure: NetworkRequestError.badRequest).eraseToAnyPublisher()
-        }
-        typealias RequestPublisher = AnyPublisher<R.ReturnType, NetworkRequestError>
-        let requestPublisher: RequestPublisher = apiClient.dispatch(request: urlRequest)
-        return requestPublisher.eraseToAnyPublisher()
+class EntryServiceImpl: EntryService {
+    private let provider = MoyaProvider<DictionaryAPI>()
+    
+    func fetchEntry(word: String) -> AnyPublisher<Entry, NetworkRequestError> {
+        return provider.requestPublisher(.getEntry(word: word))
+            .tryMap { response in
+                if (200...299).contains(response.statusCode) {
+                    return try JSONDecoder().decode(Entry.self, from: response.data)
+                } else {
+                    throw try JSONDecoder().decode(DictionaryAPIError.self, from: response.data)
+                }
+            }
+            .mapError { error in
+                switch error {
+                case let moyaError as MoyaError:
+                    return NetworkRequestError(moyaError: moyaError)
+                case let urlError as URLError:
+                    return NetworkRequestError(urlError: urlError)
+                case let decodingError as DecodingError:
+                    return NetworkRequestError(decodingError: decodingError)
+                case let apiError as DictionaryAPIError:
+                    return NetworkRequestError(dictionaryError: apiError)
+                default:
+                    return NetworkRequestError(error: error)
+                }
+            }
+            .eraseToAnyPublisher()
     }
 }
