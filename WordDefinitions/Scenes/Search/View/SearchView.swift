@@ -18,11 +18,19 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.entriesList) { message in
-                VStack(alignment: .leading) {
-                    Text(message.word)
-                        .font(.headline)
-                    Text(message.phonetic)
+            List(viewModel.entriesList) { entry in
+                ZStack(alignment: .leading) {
+                    SearchItemView(entry: entry)
+                        .contentShape(Rectangle())
+
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if let selectedIndex = viewModel.entriesList.firstIndex(of: entry) {
+                                coordinator?.navigateToDeinitionDetails(with: viewModel.currentEntry(at: selectedIndex))
+                            }
+                        }
                 }
             }
             .navigationTitle("Search Definition")

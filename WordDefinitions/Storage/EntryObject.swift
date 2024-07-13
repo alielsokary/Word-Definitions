@@ -8,6 +8,17 @@
 import RealmSwift
 
 public class EntryObject: Object {
-    @Persisted public var word: String = ""
+    @Persisted(primaryKey: true) public var word: String = ""
     @Persisted public var phonetic: String = ""
+    @Persisted var meanings = List<MeaningObject>()
+}
+
+public class MeaningObject: Object {
+    @Persisted public var partOfSpeech: String = ""
+    @Persisted var definitions = List<DefinitionObject>()
+}
+
+public class DefinitionObject: Object {
+    @Persisted public var definition: String = ""
+    @Persisted public var example: String? = nil
 }

@@ -27,6 +27,13 @@ class MainCoordinator: NSObject, Coordinator {
         let vc = UIHostingController(rootView: SearchView(viewModel: viewModel, coordinator: self))
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func navigateToDeinitionDetails(with viewModel: EntryViewModel) {
+        let definitionDetailsCoordinator = DefinitionDetailsCoordinator(navigationController: navigationController, viewModel: viewModel)
+
+        childCoordinators.append(definitionDetailsCoordinator)
+        definitionDetailsCoordinator.start()
+    }
 
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {

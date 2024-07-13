@@ -30,6 +30,10 @@ class SearchViewModel: ObservableObject {
             .store(in: &cancelable)
     }
     
+    func currentEntry(at index: Int) -> EntryViewModel {
+        return entriesList[index]
+    }
+    
     func search(word: String) {
         guard !word.isEmpty else { return }
         
