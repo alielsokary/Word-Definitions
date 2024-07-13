@@ -9,8 +9,15 @@ import Foundation
 import Combine
 
 class SearchViewModel: ObservableObject {
+    @Published var title: String = "Search Definition"
+    @Published var errorTitle: String = "Error"
+    @Published var okTitle: String = "OK"
+    
+    
     @Published var searchText: String = ""
     @Published var entriesList = [EntryViewModel]()
+    @Published var filteredEntries: [EntryViewModel] = []
+    
     @Published var errorWrapper: ErrorWrapper?
     
     private let repository: EntriesRepository
@@ -20,12 +27,17 @@ class SearchViewModel: ObservableObject {
         self.repository = repository
         
         self.entriesList = repository.fetchSavedEntries()
+        self.filteredEntries = self.entriesList
         
         $searchText
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .removeDuplicates()
-            .sink { [weak self] newValue in
-                self?.search(word: newValue)
+            .sink { [weak self] searchText in
+                guard let self = self else { return }
+                self.filteredEntries = self.entriesList.filter { entry in
+                    searchText.isEmpty ? true : entry.word.lowercased().contains(searchText.lowercased())
+                }
+                self.search(word: searchText)
             }
             .store(in: &cancelable)
     }
@@ -50,8 +62,8 @@ class SearchViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] newEntries in
                 guard let self = self else { return }
-                
                 self.entriesList.append(contentsOf: newEntries)
+                self.filteredEntries = self.entriesList
             }
             .store(in: &cancelable)
     }
