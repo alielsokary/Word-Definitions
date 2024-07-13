@@ -18,7 +18,7 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
-            List(viewModel.entriesList) { entry in
+            List(viewModel.filteredEntries) { entry in
                 ZStack(alignment: .leading) {
                     SearchItemView(entry: entry)
                         .contentShape(Rectangle())
@@ -33,11 +33,11 @@ struct SearchView: View {
                         }
                 }
             }
-            .navigationTitle("Search Definition")
+            .navigationTitle(viewModel.title)
         }
         .searchable(text: $viewModel.searchText)
         .alert(item: $viewModel.errorWrapper) { errorWrapper in
-            Alert(title: Text("Error"), message: Text(errorWrapper.message), dismissButton: .default(Text("OK")))
+            Alert(title: Text(viewModel.errorTitle), message: Text(errorWrapper.message), dismissButton: .default(Text(viewModel.okTitle)))
         }
     }
 }
