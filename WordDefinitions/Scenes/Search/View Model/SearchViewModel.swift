@@ -11,6 +11,7 @@ import Combine
 class SearchViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var entriesList = [EntryViewModel]()
+    @Published var errorWrapper: ErrorWrapper?
     
     private let repository: EntriesRepository
     private var cancelable: Set<AnyCancellable> = []
@@ -41,7 +42,7 @@ class SearchViewModel: ObservableObject {
                 switch completion {
                 case .finished: break
                 case let .failure(error):
-                    print(error)
+                    self.errorWrapper = ErrorWrapper(message: error.localizedDescription)
                 }
             } receiveValue: { [weak self] newEntries in
                 guard let self = self else { return }
@@ -50,4 +51,10 @@ class SearchViewModel: ObservableObject {
             }
             .store(in: &cancelable)
     }
+}
+
+
+struct ErrorWrapper: Identifiable {
+    let id = UUID()
+    let message: String
 }

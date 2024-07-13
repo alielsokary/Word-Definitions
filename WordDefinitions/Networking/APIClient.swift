@@ -25,10 +25,8 @@ struct APIClient: HTTPClient {
         return urlSession
             .dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .default))
-            // Map on Request response
             .tryMap({ data, response in
 
-                // If the response is invalid, throw an error
                 guard let response = response as? HTTPURLResponse else {
                     throw httpError(0)
                 }
@@ -39,17 +37,13 @@ struct APIClient: HTTPClient {
                 if !(200...299).contains(response.statusCode) {
                     throw httpError(response.statusCode)
                 }
-                // Return Response data
                 return data
             })
             .receive(on: DispatchQueue.main)
-            // Decode data using our ReturnType
             .decode(type: ReturnType.self, decoder: JSONDecoder())
-            // Handle any decoding errors
             .mapError { error in
                 return handleError(error)
             }
-            // And finally, expose our publisher
             .eraseToAnyPublisher()
     }
 
@@ -73,15 +67,20 @@ struct APIClient: HTTPClient {
     /// - Parameter error: URLSession publisher error
     /// - Returns: Readable NetworkRequestError
     private func handleError(_ error: Error) -> NetworkRequestError {
-        switch error {
-        case is Swift.DecodingError:
-            return .decodingError(error.localizedDescription)
-        case let urlError as URLError:
-            return .urlSessionFailed(urlError)
-        case let error as NetworkRequestError:
-            return error
-        default:
-            return .unknownError
+        if let urlError = error as? URLError {
+            switch urlError.code {
+            case .notConnectedToInternet:
+                return .noInternetConnection
+            default:
+                return .urlSessionFailed(urlError)
+            }
         }
+        if let decodingError = error as? Swift.DecodingError {
+            return .decodingError(decodingError.localizedDescription)
+        }
+        if let networkError = error as? NetworkRequestError {
+            return networkError
+        }
+        return .unknownError
     }
 }

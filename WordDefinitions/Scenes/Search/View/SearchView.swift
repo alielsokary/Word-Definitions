@@ -28,5 +28,8 @@ struct SearchView: View {
             .navigationTitle("Search Definition")
         }
         .searchable(text: $viewModel.searchText)
+        .alert(item: $viewModel.errorWrapper) { errorWrapper in
+            Alert(title: Text("Error"), message: Text(errorWrapper.message), dismissButton: .default(Text("OK")))
+        }
     }
 }

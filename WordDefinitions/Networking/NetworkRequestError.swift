@@ -7,17 +7,44 @@
 
 import Foundation
 
-enum NetworkRequestError: LocalizedError, Equatable {
-    case invalidRequest
+enum NetworkRequestError: LocalizedError {
     case badRequest
     case unauthorized
     case forbidden
     case notFound
-    case error4xx(_ code: Int)
+    case error4xx(Int)
     case serverError
-    case error5xx(_ code: Int)
-    case decodingError( _ description: String)
-    case urlSessionFailed(_ error: URLError)
-    case timeOut
+    case error5xx(Int)
+    case decodingError(String)
+    case urlSessionFailed(URLError)
     case unknownError
+    case noInternetConnection
+
+    var errorDescription: String? {
+        switch self {
+        case .badRequest:
+            return "Bad request"
+        case .unauthorized:
+            return "Unauthorized"
+        case .forbidden:
+            return "Forbidden"
+        case .notFound:
+            return "Not found"
+        case .error4xx(let code):
+            return "Client error with code \(code)"
+        case .serverError:
+            return "Server error"
+        case .error5xx(let code):
+            return "Server error with code \(code)"
+        case .decodingError(let message):
+            return "Decoding error: \(message)"
+        case .urlSessionFailed(let error):
+            return "URL session failed with error: \(error.localizedDescription)"
+        case .unknownError:
+            return "Unknown error"
+        case .noInternetConnection:
+            return "No internet connection"
+        }
+    }
 }
+
