@@ -27,16 +27,24 @@ struct License: Codable {
 
 // MARK: - Meaning
 struct Meaning: Codable {
-    let partOfSpeech: String?
-    let definitions: [Definition]?
-    let synonyms, antonyms: [String]?
+    let partOfSpeech: String
+    let definitions: [Definition]
+
+    init(from meaningObject: MeaningObject) {
+        self.partOfSpeech = meaningObject.partOfSpeech
+        self.definitions = meaningObject.definitions.map { Definition(from: $0) }
+    }
 }
 
 // MARK: - Definition
 struct Definition: Codable {
-    let definition: String?
-    let synonyms, antonyms: [String]?
+    let definition: String
     let example: String?
+
+    init(from definitionObject: DefinitionObject) {
+        self.definition = definitionObject.definition
+        self.example = definitionObject.example
+    }
 }
 
 // MARK: - Phonetic
@@ -45,7 +53,7 @@ struct Phonetic: Codable {
     let audio: String?
     let sourceURL: String?
     let license: License?
-
+    
     enum CodingKeys: String, CodingKey {
         case text, audio
         case sourceURL = "sourceUrl"

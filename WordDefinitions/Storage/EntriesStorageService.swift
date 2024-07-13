@@ -24,8 +24,20 @@ class EntriesStorageServiceImpl: EntriesStorageService {
         entryObject.word = entry.word
         entryObject.phonetic = entry.phonetic
 
+        entry.meanings.forEach { meaning in
+            let meaningObject = MeaningObject()
+            meaningObject.partOfSpeech = meaning.partOfSpeech
+            meaning.definitions.forEach { definition in
+                let definitionObject = DefinitionObject()
+                definitionObject.definition = definition.definition
+                definitionObject.example = definition.example
+                meaningObject.definitions.append(definitionObject)
+            }
+            entryObject.meanings.append(meaningObject)
+        }
+
         try! realm.write {
-            realm.add(entryObject)
+            realm.add(entryObject, update: .modified)
         }
     }
 
