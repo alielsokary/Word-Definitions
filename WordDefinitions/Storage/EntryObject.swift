@@ -20,5 +20,5 @@ public class MeaningObject: Object {
 
 public class DefinitionObject: Object {
     @Persisted public var definition: String = ""
-    @Persisted public var example: String? = nil
+    @Persisted public var example: String?
 }

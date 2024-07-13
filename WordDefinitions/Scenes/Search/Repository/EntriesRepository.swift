@@ -15,12 +15,12 @@ protocol EntriesRepository {
 class EntriesRepositoryImpl: EntriesRepository {
     private let apiService: EntryService
     private let storageService: EntriesStorageService
-    
+
     init(apiService: EntryService, storageService: EntriesStorageService) {
         self.apiService = apiService
         self.storageService = storageService
     }
-    
+
     func search(word: String) -> AnyPublisher<[EntryViewModel], NetworkRequestError> {
             return apiService.fetchEntry(word: word)
                 .map { entry in

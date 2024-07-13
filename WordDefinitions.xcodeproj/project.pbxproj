@@ -126,8 +126,8 @@
 			children = (
 				417D49F72C41E648001E6D6F /* App */,
 				417D49EF2C41E4CD001E6D6F /* Coordinator */,
-				417D4A042C420C85001E6D6F /* Scenes */,
 				417D49E42C41D634001E6D6F /* Model */,
+				417D4A042C420C85001E6D6F /* Scenes */,
 				417D49D32C41D15F001E6D6F /* Networking */,
 				417D49FB2C4207A9001E6D6F /* Storage */,
 				417D4A132C430766001E6D6F /* Extensions */,
@@ -150,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				4173C72F2C432F33006A0C7E /* DictionaryAPIError.swift */,
-				417D49D82C41D1B2001E6D6F /* NetworkRequestError.swift */,
 				4173C72B2C4321AD006A0C7E /* DictionaryAPI.swift */,
+				417D49D82C41D1B2001E6D6F /* NetworkRequestError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -309,6 +309,7 @@
 				4127DB272C41CFD000BEACE4 /* Sources */,
 				4127DB282C41CFD000BEACE4 /* Frameworks */,
 				4127DB292C41CFD000BEACE4 /* Resources */,
+				4173C7312C433628006A0C7E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -402,6 +403,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4173C7312C433628006A0C7E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint --fix && swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4127DB272C41CFD000BEACE4 /* Sources */ = {
@@ -591,6 +613,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WordDefinitions/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,6 +639,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WordDefinitions/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

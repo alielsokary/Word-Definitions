@@ -22,11 +22,11 @@ enum NetworkRequestError: LocalizedError {
     case noInternetConnection
     case moyaError(MoyaError)
     case custom(String)
-    
+
     init(moyaError: MoyaError) {
         self = .moyaError(moyaError)
     }
-    
+
     init(urlError: URLError) {
         switch urlError.code {
         case .notConnectedToInternet:
@@ -35,15 +35,15 @@ enum NetworkRequestError: LocalizedError {
             self = .urlSessionFailed(urlError)
         }
     }
-    
+
     init(decodingError: DecodingError) {
         self = .decodingError(decodingError.localizedDescription)
     }
-    
+
     init(dictionaryError: DictionaryAPIError) {
         self = .custom(dictionaryError.message)
     }
-    
+
     init(error: Error) {
         self = .unknownError
     }
