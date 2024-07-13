@@ -19,8 +19,10 @@ class MainCoordinator: NSObject, Coordinator {
 
     func start() {
         navigationController.delegate = self
-        let service: EntryService = EntryServiceImpl()
-        let viewModel = SearchViewModel(apiService: service)
+        let apiService: EntryService = EntryServiceImpl()
+        let storageService: EntriesStorageService = EntriesStorageServiceImpl()
+        let repository: EntriesRepository = EntriesRepositoryImpl(apiService: apiService, storageService: storageService)
+        let viewModel = SearchViewModel(repository: repository)
 
         let vc = UIHostingController(rootView: SearchView(viewModel: viewModel, coordinator: self))
         navigationController.pushViewController(vc, animated: true)
