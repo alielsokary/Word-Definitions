@@ -12,23 +12,22 @@ class SearchViewModel: ObservableObject {
     @Published var title: String = "Search Definition"
     @Published var errorTitle: String = "Error"
     @Published var okTitle: String = "OK"
-    
-    
+
     @Published var searchText: String = ""
     @Published var entriesList = [EntryViewModel]()
     @Published var filteredEntries: [EntryViewModel] = []
-    
+
     @Published var errorWrapper: ErrorWrapper?
-    
+
     private let repository: EntriesRepository
     private var cancelable: Set<AnyCancellable> = []
-    
+
     init(repository: EntriesRepository) {
         self.repository = repository
-        
+
         self.entriesList = repository.fetchSavedEntries()
         self.filteredEntries = self.entriesList
-        
+
         $searchText
             .debounce(for: .milliseconds(700), scheduler: RunLoop.main)
             .removeDuplicates()
@@ -41,18 +40,18 @@ class SearchViewModel: ObservableObject {
             }
             .store(in: &cancelable)
     }
-    
+
     func currentEntry(at index: Int) -> EntryViewModel {
         return entriesList[index]
     }
-    
+
     func search(word: String) {
         guard !word.isEmpty else { return }
-        
+
         if entriesList.contains(where: { $0.word.lowercased() == word.lowercased() }) {
             return
         }
-        
+
         repository.search(word: word)
             .sink { [weak self] completion in
                 guard let self = self else { return }
@@ -69,7 +68,6 @@ class SearchViewModel: ObservableObject {
             .store(in: &cancelable)
     }
 }
-
 
 struct ErrorWrapper: Identifiable {
     let id = UUID()

@@ -15,8 +15,12 @@ protocol EntriesStorageService {
 class EntriesStorageServiceImpl: EntriesStorageService {
     private let realm: Realm
 
-    init(realm: Realm = try! Realm()) {
-        self.realm = realm
+    init() {
+        do {
+            self.realm = try Realm()
+        } catch {
+            fatalError("Failed to initialize Realm: \(error.localizedDescription)")
+        }
     }
 
     func save(entry: EntryViewModel) {
@@ -36,8 +40,12 @@ class EntriesStorageServiceImpl: EntriesStorageService {
             entryObject.meanings.append(meaningObject)
         }
 
-        try! realm.write {
-            realm.add(entryObject, update: .modified)
+        do {
+            try realm.write {
+                realm.add(entryObject, update: .modified)
+            }
+        } catch {
+            print("Failed to save entry to Realm: \(error.localizedDescription)")
         }
     }
 

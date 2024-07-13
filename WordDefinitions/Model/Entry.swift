@@ -53,7 +53,7 @@ struct Phonetic: Codable {
     let audio: String?
     let sourceURL: String?
     let license: License?
-    
+
     enum CodingKeys: String, CodingKey {
         case text, audio
         case sourceURL = "sourceUrl"

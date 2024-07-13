@@ -18,4 +18,3 @@ class DefinitionDetailsViewModel: ObservableObject {
         self.meanings = entry.meanings.map { MeaningViewModel(meaning: $0) }
     }
 }
-

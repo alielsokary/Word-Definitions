@@ -18,7 +18,7 @@ struct EntryViewModel: Identifiable, Equatable {
         self.phonetic = entry.phonetic ?? ""
         self.meanings = entry.meanings ?? []
     }
-    
+
     init(entryObject: EntryObject) {
         self.word = entryObject.word
         self.phonetic = entryObject.phonetic
@@ -29,5 +29,3 @@ struct EntryViewModel: Identifiable, Equatable {
         return lhs.word.lowercased() == rhs.word.lowercased() && lhs.phonetic == rhs.phonetic
     }
 }
-
-

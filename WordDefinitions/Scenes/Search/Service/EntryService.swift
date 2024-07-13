@@ -16,7 +16,7 @@ protocol EntryService {
 
 class EntryServiceImpl: EntryService {
     private let provider = MoyaProvider<DictionaryAPI>()
-    
+
     func fetchEntry(word: String) -> AnyPublisher<Entry, NetworkRequestError> {
         return provider.requestPublisher(.getEntry(word: word))
             .tryMap { response in

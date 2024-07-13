@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct SearchItemView: View {
-    
+
     var entry: EntryViewModel
 
     var body: some View {
-
         VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Text(entry.word)
