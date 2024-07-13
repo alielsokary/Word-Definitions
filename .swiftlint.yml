@@ -2,3 +2,4 @@ disabled_rules:
 - line_length
 - identifier_name
 - operator_whitespace
+- non_optional_string_data_conversion

@@ -29,7 +29,7 @@ class SearchViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_search_returnsCorrectWord() {
+    func test_filteredEntries_containsCorrectWord() {
         let expectation = self.expectation(description: "Searching for a word")
         viewModel.searchText = "test"
 

@@ -20,14 +20,4 @@ class MockEntriesRepository: EntriesRepository {
     func fetchSavedEntries() -> [EntryViewModel] {
         return []
     }
-
-    private func makeElement() -> EntryElement {
-        let element = EntryElement(word: "test",
-                                        phonetic: "wo",
-                                        phonetics: nil,
-                                        meanings: nil,
-                                        license: nil,
-                                        sourceUrls: nil)
-        return element
-    }
 }

@@ -43,6 +43,27 @@ extension DictionaryAPI: TargetType {
     }
 
     var sampleData: Data {
-        return Data()
+        switch self {
+        case .getEntry:
+            return """
+                [
+                    {
+                        "word": "test",
+                        "phonetic": "/test/",
+                        "meanings": [
+                            {
+                                "partOfSpeech": "noun",
+                                "definitions": [
+                                    {
+                                        "definition": "A procedure intended to establish the quality, performance, or reliability of something.",
+                                        "example": "A spelling test."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+                """.data(using: .utf8)!
+        }
     }
 }
