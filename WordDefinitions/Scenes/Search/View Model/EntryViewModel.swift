@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EntryViewModel: Identifiable {
+class EntryViewModel: Identifiable {
     var id: String { word }
     let word: String
     let phonetic: String
@@ -15,5 +15,10 @@ struct EntryViewModel: Identifiable {
     init(entry: EntryElement) {
         self.word = entry.word ?? ""
         self.phonetic = entry.phonetic ?? ""
+    }
+    
+    init(entryObject: EntryObject) {
+        self.word = entryObject.word
+        self.phonetic = entryObject.phonetic
     }
 }
