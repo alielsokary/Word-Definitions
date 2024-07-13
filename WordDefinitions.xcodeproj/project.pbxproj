@@ -16,15 +16,13 @@
 		4173C7212C43106B006A0C7E /* MeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C7202C43106B006A0C7E /* MeaningView.swift */; };
 		4173C7232C4310CE006A0C7E /* MeaningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C7222C4310CE006A0C7E /* MeaningViewModel.swift */; };
 		4173C7252C4310E4006A0C7E /* DefinitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C7242C4310E4006A0C7E /* DefinitionViewModel.swift */; };
-		417D49D52C41D17A001E6D6F /* EndpointRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49D42C41D17A001E6D6F /* EndpointRouter.swift */; };
-		417D49D72C41D19E001E6D6F /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49D62C41D19E001E6D6F /* APIConstants.swift */; };
+		4173C7282C43217E006A0C7E /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 4173C7272C43217E006A0C7E /* CombineMoya */; };
+		4173C72A2C43217E006A0C7E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4173C7292C43217E006A0C7E /* Moya */; };
+		4173C72C2C4321AD006A0C7E /* DictionaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C72B2C4321AD006A0C7E /* DictionaryAPI.swift */; };
+		4173C72E2C4321F7006A0C7E /* EntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C72D2C4321F7006A0C7E /* EntryService.swift */; };
+		4173C7302C432F33006A0C7E /* DictionaryAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C72F2C432F33006A0C7E /* DictionaryAPIError.swift */; };
 		417D49D92C41D1B2001E6D6F /* NetworkRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49D82C41D1B2001E6D6F /* NetworkRequestError.swift */; };
-		417D49DB2C41D1C2001E6D6F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49DA2C41D1C2001E6D6F /* HTTPMethod.swift */; };
-		417D49DD2C41D1D6001E6D6F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49DC2C41D1D6001E6D6F /* APIRouter.swift */; };
-		417D49DF2C41D1FE001E6D6F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49DE2C41D1FE001E6D6F /* APIClient.swift */; };
 		417D49E32C41D5C0001E6D6F /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49E22C41D5C0001E6D6F /* Entry.swift */; };
-		417D49E62C41D6D3001E6D6F /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49E52C41D6D3001E6D6F /* HTTPClient.swift */; };
-		417D49EB2C41D762001E6D6F /* EntryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49EA2C41D762001E6D6F /* EntryService.swift */; };
 		417D49EE2C41DE29001E6D6F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49ED2C41DE29001E6D6F /* SearchView.swift */; };
 		417D49F12C41E4DE001E6D6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49F02C41E4DE001E6D6F /* Coordinator.swift */; };
 		417D49F32C41E51D001E6D6F /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D49F22C41E51D001E6D6F /* MainCoordinator.swift */; };
@@ -64,15 +62,11 @@
 		4173C7202C43106B006A0C7E /* MeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningView.swift; sourceTree = "<group>"; };
 		4173C7222C4310CE006A0C7E /* MeaningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningViewModel.swift; sourceTree = "<group>"; };
 		4173C7242C4310E4006A0C7E /* DefinitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewModel.swift; sourceTree = "<group>"; };
-		417D49D42C41D17A001E6D6F /* EndpointRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointRouter.swift; sourceTree = "<group>"; };
-		417D49D62C41D19E001E6D6F /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		4173C72B2C4321AD006A0C7E /* DictionaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryAPI.swift; sourceTree = "<group>"; };
+		4173C72D2C4321F7006A0C7E /* EntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryService.swift; sourceTree = "<group>"; };
+		4173C72F2C432F33006A0C7E /* DictionaryAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryAPIError.swift; sourceTree = "<group>"; };
 		417D49D82C41D1B2001E6D6F /* NetworkRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestError.swift; sourceTree = "<group>"; };
-		417D49DA2C41D1C2001E6D6F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		417D49DC2C41D1D6001E6D6F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		417D49DE2C41D1FE001E6D6F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		417D49E22C41D5C0001E6D6F /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		417D49E52C41D6D3001E6D6F /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		417D49EA2C41D762001E6D6F /* EntryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryService.swift; sourceTree = "<group>"; };
 		417D49ED2C41DE29001E6D6F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		417D49F02C41E4DE001E6D6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		417D49F22C41E51D001E6D6F /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -93,7 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4173C7282C43217E006A0C7E /* CombineMoya in Frameworks */,
 				417D4A002C42091D001E6D6F /* RealmSwift in Frameworks */,
+				4173C72A2C43217E006A0C7E /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,13 +149,9 @@
 		417D49D32C41D15F001E6D6F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				417D49D42C41D17A001E6D6F /* EndpointRouter.swift */,
-				417D49D62C41D19E001E6D6F /* APIConstants.swift */,
+				4173C72F2C432F33006A0C7E /* DictionaryAPIError.swift */,
 				417D49D82C41D1B2001E6D6F /* NetworkRequestError.swift */,
-				417D49DA2C41D1C2001E6D6F /* HTTPMethod.swift */,
-				417D49DC2C41D1D6001E6D6F /* APIRouter.swift */,
-				417D49DE2C41D1FE001E6D6F /* APIClient.swift */,
-				417D49E52C41D6D3001E6D6F /* HTTPClient.swift */,
+				4173C72B2C4321AD006A0C7E /* DictionaryAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -187,7 +179,7 @@
 		417D49E92C41D743001E6D6F /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				417D49EA2C41D762001E6D6F /* EntryService.swift */,
+				4173C72D2C4321F7006A0C7E /* EntryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -325,6 +317,8 @@
 			name = WordDefinitions;
 			packageProductDependencies = (
 				417D49FF2C42091D001E6D6F /* RealmSwift */,
+				4173C7272C43217E006A0C7E /* CombineMoya */,
+				4173C7292C43217E006A0C7E /* Moya */,
 			);
 			productName = WordDefinitions;
 			productReference = 4127DB2B2C41CFD000BEACE4 /* WordDefinitions.app */;
@@ -378,6 +372,7 @@
 			mainGroup = 4127DB222C41CFD000BEACE4;
 			packageReferences = (
 				417D49FE2C42091D001E6D6F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				4173C7262C43217E006A0C7E /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 4127DB2C2C41CFD000BEACE4 /* Products */;
 			projectDirPath = "";
@@ -413,34 +408,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				417D49D72C41D19E001E6D6F /* APIConstants.swift in Sources */,
 				417D4A152C430779001E6D6F /* Optional+Extension.swift in Sources */,
 				417D49F62C41E5BA001E6D6F /* SearchViewModel.swift in Sources */,
 				417D4A102C42EFE1001E6D6F /* DefinitionDetailsViewModel.swift in Sources */,
-				417D49DB2C41D1C2001E6D6F /* HTTPMethod.swift in Sources */,
 				417D4A022C4209B6001E6D6F /* EntryObject.swift in Sources */,
+				4173C72E2C4321F7006A0C7E /* EntryService.swift in Sources */,
 				4173C71F2C431046006A0C7E /* DefinitionView.swift in Sources */,
 				417D4A092C42EF85001E6D6F /* DefinitionDetailsView.swift in Sources */,
-				417D49D52C41D17A001E6D6F /* EndpointRouter.swift in Sources */,
 				4173C7252C4310E4006A0C7E /* DefinitionViewModel.swift in Sources */,
 				4127DB2F2C41CFD000BEACE4 /* AppDelegate.swift in Sources */,
 				417D49E32C41D5C0001E6D6F /* Entry.swift in Sources */,
+				4173C72C2C4321AD006A0C7E /* DictionaryAPI.swift in Sources */,
 				417D49FD2C4207CA001E6D6F /* EntriesStorageService.swift in Sources */,
 				417D4A0C2C42EFA3001E6D6F /* DefinitionDetailsCoordinator.swift in Sources */,
 				417D49F12C41E4DE001E6D6F /* Coordinator.swift in Sources */,
-				417D49E62C41D6D3001E6D6F /* HTTPClient.swift in Sources */,
-				417D49DD2C41D1D6001E6D6F /* APIRouter.swift in Sources */,
 				4173C7212C43106B006A0C7E /* MeaningView.swift in Sources */,
 				417D49EE2C41DE29001E6D6F /* SearchView.swift in Sources */,
 				4173C7232C4310CE006A0C7E /* MeaningViewModel.swift in Sources */,
-				417D49EB2C41D762001E6D6F /* EntryService.swift in Sources */,
+				4173C7302C432F33006A0C7E /* DictionaryAPIError.swift in Sources */,
 				4127DB312C41CFD000BEACE4 /* SceneDelegate.swift in Sources */,
 				417D4A122C42F398001E6D6F /* SearchItemView.swift in Sources */,
 				417D49D92C41D1B2001E6D6F /* NetworkRequestError.swift in Sources */,
 				417D4A062C420CB9001E6D6F /* EntriesRepository.swift in Sources */,
 				417D49FA2C41E9F8001E6D6F /* EntryViewModel.swift in Sources */,
 				417D49F32C41E51D001E6D6F /* MainCoordinator.swift in Sources */,
-				417D49DF2C41D1FE001E6D6F /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +705,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4173C7262C43217E006A0C7E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		417D49FE2C42091D001E6D6F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -725,6 +724,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4173C7272C43217E006A0C7E /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4173C7262C43217E006A0C7E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		4173C7292C43217E006A0C7E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4173C7262C43217E006A0C7E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
 		417D49FF2C42091D001E6D6F /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 417D49FE2C42091D001E6D6F /* XCRemoteSwiftPackageReference "realm-swift" */;

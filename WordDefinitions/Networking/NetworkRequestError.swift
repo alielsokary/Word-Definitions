@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 
 enum NetworkRequestError: LocalizedError {
     case badRequest
@@ -19,6 +20,33 @@ enum NetworkRequestError: LocalizedError {
     case urlSessionFailed(URLError)
     case unknownError
     case noInternetConnection
+    case moyaError(MoyaError)
+    case custom(String)
+    
+    init(moyaError: MoyaError) {
+        self = .moyaError(moyaError)
+    }
+    
+    init(urlError: URLError) {
+        switch urlError.code {
+        case .notConnectedToInternet:
+            self = .noInternetConnection
+        default:
+            self = .urlSessionFailed(urlError)
+        }
+    }
+    
+    init(decodingError: DecodingError) {
+        self = .decodingError(decodingError.localizedDescription)
+    }
+    
+    init(dictionaryError: DictionaryAPIError) {
+        self = .custom(dictionaryError.message)
+    }
+    
+    init(error: Error) {
+        self = .unknownError
+    }
 
     var errorDescription: String? {
         switch self {
@@ -39,12 +67,15 @@ enum NetworkRequestError: LocalizedError {
         case .decodingError(let message):
             return "Decoding error: \(message)"
         case .urlSessionFailed(let error):
-            return "URL session failed with error: \(error.localizedDescription)"
+            return "\(error.localizedDescription)"
         case .unknownError:
             return "Unknown error"
         case .noInternetConnection:
             return "No internet connection"
+        case .moyaError(let error):
+            return "\(error.localizedDescription)"
+        case .custom(let message):
+            return "\(message)"
         }
     }
 }
-

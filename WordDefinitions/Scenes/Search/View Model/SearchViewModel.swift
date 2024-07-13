@@ -30,7 +30,7 @@ class SearchViewModel: ObservableObject {
         self.filteredEntries = self.entriesList
         
         $searchText
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(700), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
                 guard let self = self else { return }
@@ -54,11 +54,12 @@ class SearchViewModel: ObservableObject {
         }
         
         repository.search(word: word)
-            .sink { completion in
-                switch completion {
-                case .finished: break
-                case let .failure(error):
-                    self.errorWrapper = ErrorWrapper(message: error.localizedDescription)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                if case let .failure(error) = completion {
+                    if self.errorWrapper == nil {
+                        self.errorWrapper = ErrorWrapper(message: error.localizedDescription)
+                    }
                 }
             } receiveValue: { [weak self] newEntries in
                 guard let self = self else { return }
