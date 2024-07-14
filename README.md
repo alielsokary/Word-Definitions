@@ -2,6 +2,12 @@
 
 [![iOS](https://github.com/alielsokary/Word-Definitions/actions/workflows/iOS.yml/badge.svg)](https://github.com/alielsokary/Word-Definitions/actions/workflows/iOS.yml)
 
+
+## Demo
+
+![Simulator Screen Recording1 - iPhone 15 Pro - 2024-07-14 at 05 45 09](https://github.com/user-attachments/assets/9015efdd-068e-4d6a-8055-6ea487075def)
+
+
 ## Features
  - [x] Search word definitions using [Dictionary Api](https://dictionaryapi.dev/).
  - [x] Using **Moya** for network requests.
