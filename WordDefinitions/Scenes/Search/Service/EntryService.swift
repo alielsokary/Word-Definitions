@@ -15,7 +15,11 @@ protocol EntryService {
 }
 
 class EntryServiceImpl: EntryService {
-    private let provider = MoyaProvider<DictionaryAPI>()
+    private let provider: MoyaProvider<DictionaryAPI>!
+
+    init(provider: MoyaProvider<DictionaryAPI> = MoyaProvider<DictionaryAPI>()) {
+        self.provider = provider
+    }
 
     func fetchEntry(word: String) -> AnyPublisher<Entry, NetworkRequestError> {
         return provider.requestPublisher(.getEntry(word: word))
