@@ -49,4 +49,14 @@ class EntriesRepositoryTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
     }
+
+    func test_fetchSavedEntries_returnsCorrectEntry() {
+        let entry = makeElement()
+        let entryViewModel = EntryViewModel(entry: entry)
+        storageService.save(entry: entryViewModel)
+
+        let fetchedEntries = repository.fetchSavedEntries()
+        XCTAssertEqual(fetchedEntries.count, 1)
+        XCTAssertEqual(fetchedEntries.first?.word, "test")
+    }
 }
