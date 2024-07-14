@@ -11,6 +11,7 @@
 		4127DB312C41CFD000BEACE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127DB302C41CFD000BEACE4 /* SceneDelegate.swift */; };
 		4127DB382C41CFD100BEACE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4127DB372C41CFD100BEACE4 /* Assets.xcassets */; };
 		4127DB3B2C41CFD100BEACE4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4127DB3A2C41CFD100BEACE4 /* Base */; };
+		415F80242C437219005651B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 415F80232C437219005651B1 /* README.md */; };
 		4173C71F2C431046006A0C7E /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C71E2C431046006A0C7E /* DefinitionView.swift */; };
 		4173C7212C43106B006A0C7E /* MeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C7202C43106B006A0C7E /* MeaningView.swift */; };
 		4173C7232C4310CE006A0C7E /* MeaningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4173C7222C4310CE006A0C7E /* MeaningViewModel.swift */; };
@@ -63,6 +64,7 @@
 		4127DB3A2C41CFD100BEACE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4127DB3C2C41CFD100BEACE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4127DB412C41CFD100BEACE4 /* WordDefinitionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordDefinitionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		415F80232C437219005651B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4173C71E2C431046006A0C7E /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
 		4173C7202C43106B006A0C7E /* MeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningView.swift; sourceTree = "<group>"; };
 		4173C7222C4310CE006A0C7E /* MeaningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningViewModel.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		4127DB222C41CFD000BEACE4 = {
 			isa = PBXGroup;
 			children = (
+				415F80232C437219005651B1 /* README.md */,
 				4127DB2D2C41CFD000BEACE4 /* WordDefinitions */,
 				4127DB442C41CFD100BEACE4 /* WordDefinitionsTests */,
 				4127DB2C2C41CFD000BEACE4 /* Products */,
@@ -137,8 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				417D49F72C41E648001E6D6F /* App */,
-				417D49EF2C41E4CD001E6D6F /* Coordinator */,
 				417D49E42C41D634001E6D6F /* Model */,
+				417D49EF2C41E4CD001E6D6F /* Coordinator */,
 				417D4A042C420C85001E6D6F /* Scenes */,
 				417D49D32C41D15F001E6D6F /* Networking */,
 				417D49FB2C4207A9001E6D6F /* Storage */,
@@ -416,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				415F80242C437219005651B1 /* README.md in Resources */,
 				4127DB382C41CFD100BEACE4 /* Assets.xcassets in Resources */,
 				4127DB3B2C41CFD100BEACE4 /* Base in Resources */,
 			);
